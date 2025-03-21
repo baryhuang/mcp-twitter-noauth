@@ -1,6 +1,11 @@
 # MCP Server - Twitter NoAuth 
 
+[![Docker Hub](https://img.shields.io/docker/v/buryhuang/mcp-twitter-noauth?label=Docker%20Hub)](https://hub.docker.com/r/buryhuang/mcp-twitter-noauth)
+
 A MCP (Model Context Protocol) server that provides Twitter API access without local credential or token setup. Provides core Twitter operations like searching tweets, getting user tweets, posting tweets, and replying to tweets.
+
+## Demo Video
+https://www.youtube.com/watch?v=LOxFqCTPedc
 
 ## Why MCP Twitter NoAuth Server?
 ### Critical Advantages
