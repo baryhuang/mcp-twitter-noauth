@@ -1,0 +1,17 @@
+[project]
+name = "mcp-server-twitter-noauth"
+version = "0.1.0"
+description = "A Twitter MCP server without auth setup"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.4.1", "python-dotenv>=1.0.1", "requests>=2.31.0", "python-dateutil>=2.8.2"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = ["pyright>=1.1.389"]
+
+[project.scripts]
+mcp-server-twitter-noauth = "mcp_server_twitter_noauth:main" 
