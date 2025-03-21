@@ -49,7 +49,7 @@ class TwitterClient:
         
         # Store tokens and client credentials
         self.access_token = access_token
-        self.refresh_token = refresh_token
+        self._refresh_token = refresh_token  # Renamed to avoid conflict with the method
         self.client_id = client_id
         self.client_secret = client_secret
         
@@ -137,7 +137,7 @@ class TwitterClient:
             client_id: Twitter OAuth2 client ID
             client_secret: Twitter OAuth2 client secret (only required for confidential clients)
         """
-        if not self.refresh_token:
+        if not self._refresh_token:  # Changed to use the renamed attribute
             return json.dumps({
                 "error": "No refresh token provided",
                 "status": "error"
@@ -161,7 +161,7 @@ class TwitterClient:
             # Prepare request data based on Twitter's OAuth2 implementation
             data = {
                 "grant_type": "refresh_token",
-                "refresh_token": self.refresh_token,
+                "refresh_token": self._refresh_token,  # Changed to use the renamed attribute
             }
             
             # Client ID is required in the body for public clients
@@ -180,7 +180,7 @@ class TwitterClient:
             # Update refresh token if a new one is provided
             new_refresh_token = token_data.get("refresh_token")
             if new_refresh_token:
-                self.refresh_token = new_refresh_token
+                self._refresh_token = new_refresh_token  # Changed to use the renamed attribute
             
             # Calculate expiration time if provided
             expires_in = token_data.get("expires_in")
@@ -194,7 +194,7 @@ class TwitterClient:
                 "access_token": self.access_token,
                 "expires_at": expires_at.isoformat() if expires_at else None,
                 "expires_in": expires_in,
-                "refresh_token": token_data.get("refresh_token", self.refresh_token),
+                "refresh_token": token_data.get("refresh_token", self._refresh_token),  # Changed to use the renamed attribute
                 "scope": token_data.get("scope", ""),
                 "status": "success"
             })
